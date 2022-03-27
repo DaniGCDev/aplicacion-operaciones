@@ -22,7 +22,7 @@ namespace Aplicacion_suma
                 RadioButton optionButton = new RadioButton
                 {
                     Location = new Point(100, 20 + i * 25),
-                    Text = i + " digito" + (i > 1 ? "s" : ""),
+                    Text = i + " dígito" + (i > 1 ? "s" : ""),
                 };
 
                 // Añadimos el botón a la lista de botones de la vista.
