@@ -209,16 +209,13 @@ namespace Aplicacion_suma
         private int LoadPlus()
         {
             // Generamos los campos de texto necesarios para los acarreos.
-            int haulagesCount = 1;
-            haulagesBoxes = haulages[0].Select((x) =>
+            haulagesBoxes = haulages[0].Select((x, i) =>
             {
-                haulagesCount++;
-
                 if (x == 0) return null;
 
                 return new TextBox
                 {
-                    Location = new Point(spacing * haulagesCount, 10),
+                    Location = new Point((i == 0 ? 1 : (i + 1)) * spacing, 10),
                     MaxLength = 1,
                     Size = new Size(15, 15),
                 };
@@ -229,17 +226,12 @@ namespace Aplicacion_suma
 
             // Generamos los campos de texto necesarios para el total.
             var resultNumberChars = resultNumber.ToString().ToCharArray();
-            int resultCount = 1;
 
-            resultBoxes = resultNumberChars.Select((x) => {
-                resultCount++;
-
-                return new TextBox
-                {
-                    Location = new Point(spacing * resultCount, 100),
-                    MaxLength = 1,
-                    Size = new Size(15, 15),
-                };
+            resultBoxes = resultNumberChars.Select((x, i) => new TextBox
+            {
+                Location = new Point((i + 1) * spacing, 100),
+                MaxLength = 1,
+                Size = new Size(15, 15),
             }).ToArray();
 
             // Añadimos los campos de los totales a la interfaz.
@@ -350,7 +342,7 @@ namespace Aplicacion_suma
             );
 
             // Generamos los labels del número 2.
-            var number2Chars = ((type == "multiply" ? "x" : "") + number2.ToString()).ToCharArray();
+            var number2Chars = ((type == "multiply" ? "x" : "+") + number2.ToString()).ToCharArray();
 
             Controls.AddRange(
                 number2Chars
@@ -619,6 +611,7 @@ namespace Aplicacion_suma
                 }
                 else
                 {
+                    ReplaceResults(true);
                     MessageBox.Show("El resultado es correcto! 🥳");
                 }
             }
