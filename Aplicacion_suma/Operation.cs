@@ -40,17 +40,11 @@ namespace Aplicacion_suma
 
             // Generamos de forma aleatoria los números a sumar.
             // Si son iguales se vuelven a generar hasta que sean diferentes.
-            //while (number1 == number2)
-            //{
-            //    number1 = GenerateRandom(option, new Random());
-            //    number2 = GenerateRandom(option, new Random());
-            //}
-
-            //number1 = 36;
-            //number2 = 22;
-
-            number1 = 429;
-            number2 = 282;
+            while (number1 == number2)
+            {
+                number1 = GenerateRandom(option, new Random());
+                number2 = GenerateRandom(option, new Random());
+            }
 
             if (type == "plus")
             {
@@ -348,7 +342,7 @@ namespace Aplicacion_suma
             Controls.AddRange(
                 number1Chars
                     .Select((x, i) => new Label {
-                        Location = new Point((resultNumberChars - number1Chars.Length + i) * spacing, 40),
+                        Location = new Point((resultNumberChars - number1Chars.Length + 1 + i) * spacing, 40),
                         Size = new Size(15, 15),
                         Text = x.ToString(),
                     })
@@ -361,7 +355,7 @@ namespace Aplicacion_suma
             Controls.AddRange(
                 number2Chars
                     .Select((x, i) => new Label {
-                        Location = new Point((resultNumberChars - number2Chars.Length + i) * spacing, 70),
+                        Location = new Point((resultNumberChars - number2Chars.Length + 1 + i) * spacing, 70),
                         Size = new Size(15, 15),
                         Text = x.ToString(),
                     })
@@ -398,18 +392,6 @@ namespace Aplicacion_suma
             // Reemplazamos los acarreos si se requiere.
             if (withHaulages)
             {
-                // Reemplazamos los campos de texto por labels.
-                Controls.AddRange(
-                    haulagesBoxes
-                        .TakeWhile((tb) => tb != null)
-                        .Select((tb) => new Label {
-                            Location = tb.Location,
-                            Size = new Size(15, 15),
-                            Text = tb.Text,
-                        })
-                        .ToArray()
-                );
-
                 // Eliminamos los campos de texto anteriores.
                 foreach (TextBox tb in haulagesBoxes)
                 {
@@ -431,14 +413,14 @@ namespace Aplicacion_suma
                         if (value != haulages[index][i] && !hasError)
                         {
                             hasError = true;
-                            MessageBox.Show("El valor es incorrecto (haulages)");
+                            MessageBox.Show("El valor es incorrecto");
                             break;
                         }
                     }
                     else if (haulages[index][i] != 0 && !hasError)
                     {
                         hasError = true;
-                        MessageBox.Show("Debes ingresar todos los campos (haulages)");
+                        MessageBox.Show("Debes ingresar todos los campos");
                         break;
                     }
                 }
@@ -523,7 +505,7 @@ namespace Aplicacion_suma
 
                         // Obtenemos el espaciado inicial de los resultados.
                         int resultCount = multiplyResultNumbers[haulagesIndex].Count();
-                        int initialSpacing = (resultNumbers.Count() - (resultCount + haulagesIndex)) * spacing;
+                        int initialSpacing = (resultNumbers.Count() - (resultCount + haulagesIndex) + 1) * spacing;
 
                         // Obtenemos el valor de y.
                         int y = initialY + (haulagesIndex * 30);
