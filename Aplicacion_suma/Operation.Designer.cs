@@ -34,7 +34,7 @@
             // 
             // VerifyButton
             // 
-            this.VerifyButton.Location = new System.Drawing.Point(197, 226);
+            this.VerifyButton.Location = new System.Drawing.Point(197, 306);
             this.VerifyButton.Name = "VerifyButton";
             this.VerifyButton.Size = new System.Drawing.Size(75, 23);
             this.VerifyButton.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(12, 226);
+            this.BackButton.Location = new System.Drawing.Point(12, 306);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 341);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.VerifyButton);
             this.Name = "Operation";

@@ -40,7 +40,23 @@ namespace Aplicacion_suma
             {
                 if (option.Checked)
                 {
-                    new Operation(i).Show();
+                    new Operation("plus", i).Show();
+                    Hide();
+                    break;
+                }
+
+                i++;
+            }
+        }
+
+        private void btb_multi_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            foreach (RadioButton option in options)
+            {
+                if (option.Checked)
+                {
+                    new Operation("multiply", i).Show();
                     Hide();
                     break;
                 }
